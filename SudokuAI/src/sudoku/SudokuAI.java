@@ -12,16 +12,27 @@ public class SudokuAI {
 	
 	private Sudoku puzzle;
 	
+	//creates ai that solves puzzle
 	public SudokuAI(Sudoku puzzle) {
 		this.puzzle = puzzle;
 	}
 	
+	/**
+	 * solves the puzzle using backtracking
+	 */
 	public void solve() {
 		if(!puzzle.isSolved()) {
 			puzzle = solve(puzzle.copySudoku(), 0, 0);
 		}
 	}
 	
+	/**
+	 * helper method for solve that uses recursion
+	 * @param puzzle - puzzle to solve
+	 * @param i - current row
+	 * @param j - current column
+	 * @return the solved puzzle
+	 */
 	private Sudoku solve(Sudoku puzzle, int i, int j) {
 		if(puzzle.isSolved()) {
 			return puzzle;
@@ -51,6 +62,7 @@ public class SudokuAI {
 		return null;
 	}
 	
+	//returns the puzzle
 	public Sudoku getPuzzle() {
 		return puzzle;
 	}
